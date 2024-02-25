@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://680m7i607vlg"]
+
+[ext_resource type="Script" path="res://скрипты/игрок/игрок_контроллер.gd" id="1_ya4ha"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nsxqa"]
+radius = 0.35
+
+[node name="Игрок" type="CharacterBody3D" node_paths=PackedStringArray("camera", "camera_pivot", "collision") groups=["игроки"]]
+collision_layer = 2
+script = ExtResource("1_ya4ha")
+camera = NodePath("camera_pivot/Camera3D")
+camera_pivot = NodePath("camera_pivot")
+collision = NodePath("CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_nsxqa")
+
+[node name="raycasts" type="Node3D" parent="CollisionShape3D"]
+
+[node name="RayCast3D" type="RayCast3D" parent="CollisionShape3D/raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
+target_position = Vector3(0, 1, 0)
+collide_with_areas = true
+
+[node name="RayCast3D2" type="RayCast3D" parent="CollisionShape3D/raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3)
+target_position = Vector3(0, 1, 0)
+collide_with_areas = true
+
+[node name="RayCast3D3" type="RayCast3D" parent="CollisionShape3D/raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0)
+target_position = Vector3(0, 1, 0)
+collide_with_areas = true
+
+[node name="RayCast3D4" type="RayCast3D" parent="CollisionShape3D/raycasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
+target_position = Vector3(0, 1, 0)
+collide_with_areas = true
+
+[node name="camera_pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="camera_pivot"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dykt5ac1lhhfm"]
+[gd_scene load_steps=7 format=3 uid="uid://dykt5ac1lhhfm"]
 
 [ext_resource type="Texture2D" uid="uid://cvcqmw1dl8kc1" path="res://графика/бесшовные/texture_01.png" id="1_pumn8"]
 [ext_resource type="PackedScene" uid="uid://680m7i607vlg" path="res://префабы/игрок.tscn" id="2_mloes"]
+[ext_resource type="PackedScene" uid="uid://bctxt7h80rhtg" path="res://модели/ПТРК Корнет.glb" id="3_7brf0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1o82"]
 albedo_texture = ExtResource("1_pumn8")
@@ -74,8 +75,8 @@ size = Vector3(3, 3, 3)
 material = SubResource("StandardMaterial3D_i1o82")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="полигон"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 7.17249, 1.5, 4.67249)
-size = Vector3(2.58838, 2, 1)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 7.17249, 2.5, 4.67249)
+size = Vector3(2.58838, 4, 1)
 material = SubResource("StandardMaterial3D_i1o82")
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="полигон"]
@@ -218,7 +219,7 @@ size = Vector3(1, 5, 26)
 material = SubResource("StandardMaterial3D_i1o82")
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="полигон"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 13.322, 1, 13.7017)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.513, 1, 13.7541)
 size = Vector3(1, 1, 3.51172)
 material = SubResource("StandardMaterial3D_i1o82")
 
@@ -282,3 +283,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42212, 0.5, -0.226362)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gds84")
 camera_attributes = SubResource("CameraAttributesPractical_neese")
+
+[node name="ПТРК Корнет" parent="." instance=ExtResource("3_7brf0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.21478, 0.5, -2.32546)

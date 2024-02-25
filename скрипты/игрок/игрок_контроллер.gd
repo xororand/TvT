@@ -94,7 +94,7 @@ func process_gravity(delta):
 	if !is_on_floor(): # гравитация
 		for i in get_slide_collision_count():
 			var c = get_slide_collision(i)
-			if c.get_normal().y < 0.0 and !is_on_wall():
+			if c.get_normal().y < 0.0 and !is_on_wall() or velocity.y == 0:
 				jump_float = delta * 2
 		vel_move.y += ProjectSettings.get_setting("physics/3d/default_gravity") * jump_float
 	

@@ -1,20 +1,11 @@
 extends Node3D
 
-var hitten:bool = false
-
+@onready var animplayer = $AnimationPlayer
 
 func _physics_process(delta):
-	if hitten:
-		rotation.z -= delta
-	else:
-		rotation.z += delta
-	
-	rotation.z = clamp(rotation.z, -90.0, 0.0)
-	
-	if hitten and rotation.z > -80.0:
-		hitten = false
+	pass
 
 func hit():
 	print("hit")
-	hitten = true
+	animplayer.play("hitten")
 

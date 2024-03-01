@@ -33,13 +33,14 @@ font_size = 8
 [sub_resource type="LabelSettings" id="LabelSettings_41yhv"]
 font_size = 8
 
-[node name="Игрок" type="CharacterBody3D" node_paths=PackedStringArray("camera", "camera_pivot", "camera_blur", "collision", "aim_pos", "handitem") groups=["игроки"]]
+[node name="Игрок" type="CharacterBody3D" node_paths=PackedStringArray("camera", "camera_pivot", "camera_blur", "collision", "tip_label", "aim_pos", "handitem") groups=["игроки"]]
 collision_layer = 2
 script = ExtResource("1_ya4ha")
 camera = NodePath("camera_pivot/Camera3D")
 camera_pivot = NodePath("camera_pivot")
 camera_blur = NodePath("blur")
 collision = NodePath("CollisionShape3D")
+tip_label = NodePath("UI/tip_label")
 aim_pos = NodePath("camera_pivot/aim_pos")
 handitem = NodePath("camera_pivot/aim_pos/hand_item")
 c_rot_x = 0.15
@@ -108,6 +109,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="tip_label" type="Label" parent="UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -78.0
+offset_right = -25.0
+offset_bottom = -45.0
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
 
 [node name="Инвентарь" type="Control" parent="."]
 visible = false

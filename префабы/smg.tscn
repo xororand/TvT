@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://doe8i0bi0kso5"]
 
 [ext_resource type="PackedScene" uid="uid://c2jqgud171t2n" path="res://модели/SMG/SMG.glb" id="1_3wsr5"]
-[ext_resource type="PackedScene" path="res://модели/обвесы оружия/прицел.glb" id="2_upeyd"]
+[ext_resource type="PackedScene" uid="uid://175bpuuo2h2" path="res://модели/обвесы оружия/прицел.glb" id="2_upeyd"]
 
 [node name="SMG" type="Node3D"]
 

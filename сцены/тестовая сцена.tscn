@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dykt5ac1lhhfm"]
+[gd_scene load_steps=8 format=3 uid="uid://dykt5ac1lhhfm"]
 
 [ext_resource type="Texture2D" uid="uid://cvcqmw1dl8kc1" path="res://графика/бесшовные/texture_01.png" id="1_pumn8"]
 [ext_resource type="PackedScene" uid="uid://680m7i607vlg" path="res://префабы/игрок.tscn" id="2_mloes"]
 [ext_resource type="PackedScene" uid="uid://bctxt7h80rhtg" path="res://модели/ПТРК Корнет.glb" id="3_7brf0"]
 [ext_resource type="PackedScene" uid="uid://b8457quka0cln" path="res://модели/полевая пушка.glb" id="4_qs2ch"]
+[ext_resource type="PackedScene" uid="uid://c7yaeokbnngq4" path="res://префабы/машина.tscn" id="6_elbd2"]
 [ext_resource type="PackedScene" uid="uid://bjwvvhdlp67a6" path="res://префабы/Цель.tscn" id="6_m602q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1o82"]
@@ -27,8 +28,8 @@ snap = 0.0001
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="полигон"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 3.5)
-size = Vector3(81, 1, 24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -17.5)
+size = Vector3(81, 1, 66)
 material = SubResource("StandardMaterial3D_i1o82")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="полигон"]
@@ -188,14 +189,19 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 24, 2,
 size = Vector3(81, 5, 1)
 material = SubResource("StandardMaterial3D_i1o82")
 
-[node name="CSGBox3D20" type="CSGBox3D" parent="полигон"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 24, 2, -9)
+[node name="CSGBox3D48" type="CSGBox3D" parent="полигон"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 24, 2, -51)
 size = Vector3(81, 5, 1)
 material = SubResource("StandardMaterial3D_i1o82")
 
+[node name="CSGBox3D20" type="CSGBox3D" parent="полигон"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 31, 2, -9)
+size = Vector3(67, 5, 1)
+material = SubResource("StandardMaterial3D_i1o82")
+
 [node name="CSGBox3D21" type="CSGBox3D" parent="полигон"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17, 2, 3.5)
-size = Vector3(1, 5, 26)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -17, 2, -17)
+size = Vector3(1, 5, 67)
 material = SubResource("StandardMaterial3D_i1o82")
 
 [node name="CSGBox3D41" type="CSGBox3D" parent="полигон"]
@@ -219,8 +225,8 @@ size = Vector3(2, 2, 6)
 material = SubResource("StandardMaterial3D_i1o82")
 
 [node name="CSGBox3D22" type="CSGBox3D" parent="полигон"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 65, 2, 3.5)
-size = Vector3(1, 5, 26)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 65, 2, -17)
+size = Vector3(1, 5, 67)
 material = SubResource("StandardMaterial3D_i1o82")
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="полигон"]
@@ -233,18 +239,8 @@ transform = Transform3D(0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0, 1, -0.711287,
 size = Vector3(1, 7.98, 2)
 material = SubResource("StandardMaterial3D_i1o82")
 
-[node name="CSGBox3D36" type="CSGBox3D" parent="полигон"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 3.92344, 2, 3.5)
-size = Vector3(2, 5, 2)
-material = SubResource("StandardMaterial3D_i1o82")
-
 [node name="CSGBox3D45" type="CSGBox3D" parent="полигон"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 3.92344, 2, -8.5)
-size = Vector3(2, 5, 2)
-material = SubResource("StandardMaterial3D_i1o82")
-
-[node name="CSGBox3D46" type="CSGBox3D" parent="полигон"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -17.0766, 2, -8.5)
 size = Vector3(2, 5, 2)
 material = SubResource("StandardMaterial3D_i1o82")
 
@@ -301,5 +297,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.9141, 0.499999, 0.574184)
 
 [node name="полевая пушка" parent="." instance=ExtResource("4_qs2ch")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.02265, 0.5, -5.0732)
+
+[node name="Машина" parent="." instance=ExtResource("6_elbd2")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -8, 1, -10)
 
 [editable path="Игрок"]

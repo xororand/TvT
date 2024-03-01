@@ -9,11 +9,13 @@ class_name игрок_контроллер
 @export var camera_blur:TextureRect
 ## Основная коллизия игрока
 @export var collision:CollisionShape3D
+@export var tip_label:Label
 @onready var head_raycasts:Node3D = $"CollisionShape3D/raycasts"
 @export var animplayer:AnimationPlayer
 @export var aim_pos:Node3D
 @export var handitem:hand_item
 @onready var bullets:Node3D = get_parent().get_node("bullets")
+
 
 @export_group("Настройки камеры")
 @export var fov:float = 90.0
@@ -62,6 +64,7 @@ var issitdown:bool = false
 var isrun:bool = false
 var sitdown_coef:float = 0.0
 var proc_delta:float
+var in_vehicle:bool = false
 
 
 func _ready():
@@ -88,6 +91,8 @@ func _input(event):
 	process_camera(event)
 
 func process_gravity(delta):
+	if in_vehicle:
+		return
 	var vel_move:Vector3 = Vector3(0,0,0)
 	
 	if jump_float != 1.0:
@@ -221,6 +226,8 @@ func process_camera(event):
 		rotate_y(rot_y)
 		
 		camera_pivot.rotation_degrees.x = clamp(camera_pivot.rotation_degrees.x, max_angle_x.x, max_angle_x.y) # ограничение по вертикали
+		if in_vehicle:
+			rotation_degrees.y = clamp(rotation_degrees.y, -110, 110) # ограничение по горизонтали
 		
 		# сглаженные повороты оружием при повороте вокруг себя (ось Y)
 		if handitem.is_gun:
@@ -248,3 +255,7 @@ func process_sitdown(delta):
 	# уменьшаем/увеличиваем коллизию
 	var height:float = lerp(col_h_situp, col_h_sitdown, sitdown_coef)
 	collision.shape.height = height
+
+
+func show_text(text):
+	tip_label.text = text

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dykt5ac1lhhfm"]
+[gd_scene load_steps=8 format=3 uid="uid://dykt5ac1lhhfm"]
 
 [ext_resource type="Texture2D" uid="uid://cvcqmw1dl8kc1" path="res://графика/бесшовные/texture_01.png" id="1_pumn8"]
 [ext_resource type="PackedScene" uid="uid://680m7i607vlg" path="res://префабы/игрок.tscn" id="2_mloes"]
@@ -12,8 +12,6 @@ albedo_texture = ExtResource("1_pumn8")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 uv1_world_triplanar = true
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_i3jqe"]
 
 [node name="ТестоваяСцены" type="Node3D"]
 
@@ -287,9 +285,9 @@ material = SubResource("StandardMaterial3D_i1o82")
 [node name="Игрок" parent="." instance=ExtResource("2_mloes")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42212, 0.5, -0.226362)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Camera3D" parent="Игрок/camera_pivot" index="0"]
 environment = ExtResource("3_v8pqe")
-camera_attributes = SubResource("CameraAttributesPractical_i3jqe")
+current = true
 
 [node name="ПТРК Корнет" parent="." instance=ExtResource("3_7brf0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.21478, 0.5, -2.32546)
@@ -305,3 +303,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.7771, 0.499999, -2.06468)
 
 [node name="Цель3" parent="." instance=ExtResource("6_m602q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.9141, 0.499999, 0.574184)
+
+[editable path="Игрок"]

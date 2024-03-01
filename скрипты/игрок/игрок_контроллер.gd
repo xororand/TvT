@@ -5,6 +5,8 @@ class_name игрок_контроллер
 ## Основная камера игрока
 @export var camera:Camera3D
 @export var camera_pivot:Node3D
+# Post Process
+@export var camera_blur:TextureRect
 ## Основная коллизия игрока
 @export var collision:CollisionShape3D
 @onready var head_raycasts:Node3D = $"CollisionShape3D/raycasts"
@@ -161,6 +163,8 @@ func process_gun(delta):
 	
 	aim_coef = clamp(aim_coef, 0.0, 1.0)
 	fov_coef = clamp(fov_coef, 0.0, 1.0)
+	
+	camera_blur.material.set_shader_parameter("blur_inner", clamp(1.0 - aim_coef, 0.3, 0.9))
 	
 	camera.fov = lerp(fov, fov * fov_shift_aim_coef * handitem.fov_coef, fov_coef) # 0.65
 	aim_pos.position = lerp(_aim_pos, Vector3.ZERO, aim_coef)

@@ -1,10 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://680m7i607vlg"]
+[gd_scene load_steps=10 format=3 uid="uid://680m7i607vlg"]
 
 [ext_resource type="Script" path="res://скрипты/игрок/игрок_контроллер.gd" id="1_ya4ha"]
 [ext_resource type="Script" path="res://скрипты/игрок/hand_item.gd" id="2_h0w56"]
+[ext_resource type="Shader" path="res://графика/шейдеры/vignette.gdshader" id="3_ugx7i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nsxqa"]
 radius = 0.35
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lrmtf"]
+shader = ExtResource("3_ugx7i")
+shader_parameter/blur_radius = 0.15
+shader_parameter/blur_amount = 1.0
+shader_parameter/blur_inner = 0.9
+shader_parameter/blur_outer = 0.8
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_37ris"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ny1bt"]
 bg_color = Color(0.301961, 0.301961, 0.301961, 1)
@@ -20,17 +30,18 @@ font_size = 8
 [sub_resource type="LabelSettings" id="LabelSettings_41yhv"]
 font_size = 8
 
-[node name="Игрок" type="CharacterBody3D" node_paths=PackedStringArray("camera", "camera_pivot", "collision", "aim_pos", "handitem") groups=["игроки"]]
+[node name="Игрок" type="CharacterBody3D" node_paths=PackedStringArray("camera", "camera_pivot", "camera_blur", "collision", "aim_pos", "handitem") groups=["игроки"]]
 collision_layer = 2
 script = ExtResource("1_ya4ha")
 camera = NodePath("camera_pivot/Camera3D")
 camera_pivot = NodePath("camera_pivot")
+camera_blur = NodePath("blur")
 collision = NodePath("CollisionShape3D")
 aim_pos = NodePath("camera_pivot/aim_pos")
 handitem = NodePath("camera_pivot/aim_pos/hand_item")
 c_rot_x = 0.15
 c_rot_y = 0.15
-gun_jump_shake = 0.05
+gun_jump_shake = 0.08
 coef_razbrosa = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -74,6 +85,23 @@ gizmo_extents = 1.0
 [node name="hand_item" type="Node3D" parent="camera_pivot/aim_pos"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 script = ExtResource("2_h0w56")
+
+[node name="blur" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_lrmtf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_37ris")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Инвентарь" type="Control" parent="."]
 visible = false
@@ -690,11 +718,3 @@ offset_top = -69.0
 offset_right = 232.0
 offset_bottom = -37.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ny1bt")
-
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2

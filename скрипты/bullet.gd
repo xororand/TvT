@@ -3,6 +3,7 @@ extends Node3D
 @onready var time_start:float = Time.get_ticks_msec()
 @onready var raycast = $RayCast3D
 @onready var raycast2 = $RayCast3D2
+@onready var trail = $MeshInstance3D
 
 var bullet_speed:float = 270.0 # м/сек скорость пули
 var max_distance:float = 350.0
@@ -11,11 +12,10 @@ var current_distance:float = 0.0
 var hit = false
 
 func _ready():
-	visible = false
+	if randi_range(0, 1):
+		trail.visible = true
 
 func _process(delta):
-	visible = true
-	
 	current_distance += delta * bullet_speed
 	
 	if current_distance >= max_distance:

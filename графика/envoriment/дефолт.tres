@@ -4,11 +4,24 @@
 
 [resource]
 background_mode = 1
-background_color = Color(0.607843, 0.701961, 0.803922, 1)
+background_color = Color(0.627451, 0.717647, 0.815686, 1)
 sky = SubResource("Sky_y2rli")
 ambient_light_source = 3
-ambient_light_color = Color(0.32549, 0.32549, 0.32549, 1)
+ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 2.0
 reflected_light_source = 2
+ssr_fade_in = 1.24232
+ssr_fade_out = 1.27456
+ssr_depth_tolerance = 43.21
+glow_intensity = 7.09
+glow_strength = 0.0
+glow_mix = 1.0
+glow_bloom = 1.0
+glow_blend_mode = 3
+glow_hdr_threshold = 1.47
+glow_map_strength = 1.0
+fog_light_color = Color(0, 0, 0, 1)
+volumetric_fog_density = 0.1035
+volumetric_fog_sky_affect = 0.56
 adjustment_enabled = true
 adjustment_brightness = 1.2

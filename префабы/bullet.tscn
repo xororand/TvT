@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5yf6xds5d28v"]
+
+[ext_resource type="Script" path="res://скрипты/bullet.gd" id="1_dfo5m"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_u8txx"]
+size = Vector2(0.025, 2)
+
+[node name="Bullet" type="Node3D" groups=["bullets"]]
+script = ExtResource("1_dfo5m")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="RayCast3D2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_u8txx")

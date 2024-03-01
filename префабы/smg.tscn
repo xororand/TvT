@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://doe8i0bi0kso5"]
+
+[ext_resource type="PackedScene" uid="uid://c2jqgud171t2n" path="res://модели/SMG/SMG.glb" id="1_3wsr5"]
+
+[node name="SMG" type="Node3D"]
+
+[node name="BulletStart" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0287431, -0.167951)
+
+[node name="model" parent="." instance=ExtResource("1_3wsr5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0690308, -0.103173)

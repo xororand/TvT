@@ -1,0 +1,14 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://dob17ip16t84t"]
+
+[sub_resource type="Sky" id="Sky_y2rli"]
+
+[resource]
+background_mode = 1
+background_color = Color(0.607843, 0.701961, 0.803922, 1)
+sky = SubResource("Sky_y2rli")
+ambient_light_source = 3
+ambient_light_color = Color(0.32549, 0.32549, 0.32549, 1)
+ambient_light_energy = 2.0
+reflected_light_source = 2
+adjustment_enabled = true
+adjustment_brightness = 1.2

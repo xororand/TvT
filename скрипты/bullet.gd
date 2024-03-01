@@ -38,6 +38,9 @@ func _process(delta):
 		if collider.has_method("hit"):
 			collider.hit()
 
+func _physics_process(delta):
+	position.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * 0.001
+
 func _on_body_entered(body):
 	if body == globals.current_player:
 		return

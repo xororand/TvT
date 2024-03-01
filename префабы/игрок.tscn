@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://680m7i607vlg"]
+[gd_scene load_steps=11 format=3 uid="uid://680m7i607vlg"]
 
 [ext_resource type="Script" path="res://скрипты/игрок/игрок_контроллер.gd" id="1_ya4ha"]
 [ext_resource type="Script" path="res://скрипты/игрок/hand_item.gd" id="2_h0w56"]
+[ext_resource type="Environment" uid="uid://dob17ip16t84t" path="res://графика/envoriment/дефолт.tres" id="2_qxdwj"]
 [ext_resource type="Shader" path="res://графика/шейдеры/vignette.gdshader" id="3_ugx7i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nsxqa"]
@@ -76,6 +77,7 @@ collide_with_areas = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="Camera3D" type="Camera3D" parent="camera_pivot"]
+environment = ExtResource("2_qxdwj")
 near = 0.005
 
 [node name="aim_pos" type="Node3D" parent="camera_pivot"]

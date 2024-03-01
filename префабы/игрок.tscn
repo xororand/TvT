@@ -11,10 +11,12 @@ radius = 0.35
 shader = ExtResource("3_ugx7i")
 shader_parameter/blur_radius = 0.15
 shader_parameter/blur_amount = 1.0
-shader_parameter/blur_inner = 0.9
+shader_parameter/blur_inner = 0.6
 shader_parameter/blur_outer = 0.8
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_37ris"]
+specular_color = Color(0, 0, 0, 1)
+texture_filter = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ny1bt"]
 bg_color = Color(0.301961, 0.301961, 0.301961, 1)
@@ -87,6 +89,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 script = ExtResource("2_h0w56")
 
 [node name="blur" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_lrmtf")
 anchors_preset = 15
 anchor_right = 1.0

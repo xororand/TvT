@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dykt5ac1lhhfm"]
+[gd_scene load_steps=7 format=3 uid="uid://dykt5ac1lhhfm"]
 
 [ext_resource type="Texture2D" uid="uid://cvcqmw1dl8kc1" path="res://графика/бесшовные/texture_01.png" id="1_pumn8"]
 [ext_resource type="PackedScene" uid="uid://680m7i607vlg" path="res://префабы/игрок.tscn" id="2_mloes"]
 [ext_resource type="PackedScene" uid="uid://bctxt7h80rhtg" path="res://модели/ПТРК Корнет.glb" id="3_7brf0"]
-[ext_resource type="Environment" uid="uid://dob17ip16t84t" path="res://графика/envoriment/дефолт.tres" id="3_v8pqe"]
-[ext_resource type="PackedScene" uid="uid://svcpdex3d4v" path="res://модели/полевая пушка.glb" id="4_qs2ch"]
+[ext_resource type="PackedScene" uid="uid://b8457quka0cln" path="res://модели/полевая пушка.glb" id="4_qs2ch"]
 [ext_resource type="PackedScene" uid="uid://bjwvvhdlp67a6" path="res://префабы/Цель.tscn" id="6_m602q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1o82"]
@@ -18,7 +17,7 @@ uv1_world_triplanar = true
 [node name="bullets" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.995684, 0.0169857, -0.0912374, 0.0928051, -0.182235, 0.978865, 0, -0.983108, -0.183025, 0, 4.88455, 0)
+transform = Transform3D(0.646856, 0.139577, -0.74973, 0.762612, -0.118391, 0.63593, -1.85461e-09, -0.983108, -0.183025, 0, 4.88455, 0)
 light_color = Color(1, 1, 0.988235, 1)
 shadow_enabled = true
 
@@ -286,14 +285,10 @@ material = SubResource("StandardMaterial3D_i1o82")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42212, 0.5, -0.226362)
 
 [node name="Camera3D" parent="Игрок/camera_pivot" index="0"]
-environment = ExtResource("3_v8pqe")
 current = true
 
 [node name="ПТРК Корнет" parent="." instance=ExtResource("3_7brf0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.21478, 0.5, -2.32546)
-
-[node name="полевая пушка" parent="." instance=ExtResource("4_qs2ch")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3561, 0.5, -4.90969)
 
 [node name="Цель" parent="." instance=ExtResource("6_m602q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.7276, 0.5, -4.4656)
@@ -303,5 +298,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.7771, 0.499999, -2.06468)
 
 [node name="Цель3" parent="." instance=ExtResource("6_m602q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.9141, 0.499999, 0.574184)
+
+[node name="полевая пушка" parent="." instance=ExtResource("4_qs2ch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.02265, 0.5, -5.0732)
 
 [editable path="Игрок"]

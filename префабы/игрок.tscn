@@ -46,7 +46,7 @@ handitem = NodePath("camera_pivot/aim_pos/hand_item")
 c_rot_x = 0.15
 c_rot_y = 0.15
 gun_jump_shake = 0.08
-gun_move_speed = 0.25
+gun_move_speed = 0.2
 coef_razbrosa = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

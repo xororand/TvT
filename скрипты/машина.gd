@@ -3,24 +3,32 @@ extends VehicleBody3D
 var entered = false
 var водитель:игрок_контроллер = null
 
-var модель_руля:Mesh # TODO: поворот руля
+@export var модель_руля:MeshInstance3D # TODO: поворот руля
 
 @export var точка_водителя:Node3D
 
-func _ready():
-	pass # Replace with function body.
-
-func _process(delta):
-	pass
+var max_rpm = 80
+var max_torque = 800
 
 func _physics_process(delta):
 	if entered and водитель != null:
-		print(steering)
-		steering = lerp(steering, Input.get_axis("движ_право", "движ_лево") * 0.4, 1*delta)
-		engine_force = Input.get_axis("движ_назад", "движ_вперед") * 100
+		steering = lerp(steering, Input.get_axis("движ_право", "движ_лево") * 0.4, 2*delta)
+		var acceleration = Input.get_axis("движ_назад", "движ_вперед")
+		
+		var rpm = $BL_0.get_rpm()
+		if acceleration < 0 and rpm < 0:
+			acceleration *= 0.5
+		print(rpm)
+		$BL_0.engine_force = acceleration * max_torque * (1 - rpm / max_rpm)
+		rpm = $BR_1.get_rpm()
+		$BR_1.engine_force = acceleration * max_torque * (1 - rpm / max_rpm)
+		
+		модель_руля.rotation.z = -steering
 
 func _input(event):
-	if Input.is_action_just_pressed("использовать") and водитель != null:
+	if Input.is_action_just_pressed("использовать") and водитель != null and entered:
+		pass
+	if Input.is_action_just_pressed("использовать") and водитель != null and !entered:
 		entered = true
 		водитель.in_vehicle = true
 		водитель.show_text("")
@@ -29,6 +37,7 @@ func _input(event):
 		водитель.position = Vector3.ZERO
 		водитель.rotation = Vector3.ZERO
 		водитель.handitem.visible = false
+	
 
 func _on_водительarea_3d_body_entered(body):
 	if not body.is_in_group("игроки"):

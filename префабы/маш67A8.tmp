@@ -636,8 +636,8 @@ shape = SubResource("BoxShape3D_up5o4")
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.737598, 0.486249, 1.43655)
 use_as_steering = true
 suspension_stiffness = 50.0
-damping_compression = 0.8
-damping_relaxation = 1.0
+damping_compression = 10.0
+damping_relaxation = 10.0
 
 [node name="Object_12" type="MeshInstance3D" parent="FR_3"]
 mesh = SubResource("ArrayMesh_idu7k")
@@ -649,8 +649,8 @@ skeleton = NodePath("")
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.737598, 0.486249, 1.43655)
 use_as_steering = true
 suspension_stiffness = 50.0
-damping_compression = 0.8
-damping_relaxation = 1.0
+damping_compression = 10.0
+damping_relaxation = 10.0
 
 [node name="Object_10" type="MeshInstance3D" parent="FL_2"]
 mesh = SubResource("ArrayMesh_dcsyi")
@@ -662,8 +662,8 @@ skeleton = NodePath("")
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.737598, 0.486249, -1.43655)
 use_as_traction = true
 suspension_stiffness = 50.0
-damping_compression = 0.8
-damping_relaxation = 1.0
+damping_compression = 10.0
+damping_relaxation = 10.0
 
 [node name="Object_8" type="MeshInstance3D" parent="BR_1"]
 mesh = SubResource("ArrayMesh_g6t57")
@@ -675,8 +675,8 @@ skeleton = NodePath("")
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.737598, 0.486249, -1.43655)
 use_as_traction = true
 suspension_stiffness = 50.0
-damping_compression = 0.8
-damping_relaxation = 1.0
+damping_compression = 10.0
+damping_relaxation = 10.0
 
 [node name="Object_6" type="MeshInstance3D" parent="BL_0"]
 mesh = SubResource("ArrayMesh_tynxd")
@@ -685,7 +685,6 @@ skeleton = NodePath("")
 [node name="BL_0" type="Node3D" parent="BL_0"]
 
 [node name="uaz" type="Node3D" parent="."]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 
 [node name="Sketchfab_model" type="Node3D" parent="uaz"]
 transform = Transform3D(1, 0, 0, 0, -3.57628e-07, 1, 0, -1, -3.57628e-07, 0, 0, 0)

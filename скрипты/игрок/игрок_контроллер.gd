@@ -152,7 +152,7 @@ func process_gun(delta):
 	var aim_local_coef = delta * gun_aim_speed
 	fov_coef -= aim_local_coef
 	var _gun_jump_shake = 0.0
-	if Input.is_action_pressed("прицеливание") and handitem.is_gun:
+	if Input.is_action_pressed("прицеливание") and handitem.is_gun and not in_vehicle:
 		_gun_jump_shake = gun_jump_shake * 0.1
 		if Input.is_action_pressed("прищуриться_на_прицеливании") or handitem.fov_coef != 1.0:
 			fov_coef += aim_local_coef * 2.0

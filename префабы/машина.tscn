@@ -3,19 +3,19 @@
 [ext_resource type="Script" path="res://скрипты/машина.gd" id="1_62fqq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_up5o4"]
-size = Vector3(2.16602, 0.783668, 1.49921)
+size = Vector3(2.03717, 0.783668, 1.49921)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v7hby"]
-size = Vector3(2.16602, 0.267323, 2.71861)
+size = Vector3(2.04053, 0.267323, 2.71861)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_50k2m"]
 size = Vector3(1.97168, 0.783668, 0.0938397)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nx75p"]
-size = Vector3(2.81299, 0.783668, 0.189986)
+size = Vector3(2.71509, 0.783668, 0.132519)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4fdku"]
-size = Vector3(2.81299, 0.783668, 0.189986)
+size = Vector3(2.73999, 0.783668, 0.157371)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rudfo"]
 resource_name = "black"
@@ -642,11 +642,11 @@ script = ExtResource("1_62fqq")
 "точка_выхода_водителя" = NodePath("точки_высадки/выход_водитель")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14521, 1.37884)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0146179, 1.14521, 1.37884)
 shape = SubResource("BoxShape3D_up5o4")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48259e-07, 0.887035, -0.728968)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0109857, 0.887035, -0.728968)
 shape = SubResource("BoxShape3D_v7hby")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
@@ -654,15 +654,15 @@ transform = Transform3D(1, 1.5969e-08, 1.47087e-09, -1.5969e-08, 0.983175, 0.182
 shape = SubResource("BoxShape3D_50k2m")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.934335, 1.13628, -0.771276)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.937534, 1.13628, -0.722326)
 shape = SubResource("BoxShape3D_nx75p")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.934, 1.136, -0.771)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.950308, 1.136, -0.734501)
 shape = SubResource("BoxShape3D_4fdku")
 
 [node name="FR_3" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.737598, 0.486249, 1.43655)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.9, 0.486, 1.437)
 use_as_steering = true
 wheel_rest_length = 0.05
 suspension_stiffness = 50.0
@@ -670,13 +670,15 @@ damping_compression = 0.2
 damping_relaxation = 0.5
 
 [node name="Object_12" type="MeshInstance3D" parent="FR_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 2.38419e-07)
 mesh = SubResource("ArrayMesh_idu7k")
 skeleton = NodePath("")
 
 [node name="FR_3" type="Node3D" parent="FR_3"]
+transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0.1, 0, 2.38419e-07)
 
 [node name="FL_2" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.737598, 0.486249, 1.43655)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.9, 0.486, 1.437)
 use_as_steering = true
 wheel_rest_length = 0.05
 suspension_stiffness = 50.0
@@ -684,13 +686,15 @@ damping_compression = 0.2
 damping_relaxation = 0.5
 
 [node name="Object_10" type="MeshInstance3D" parent="FL_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
 mesh = SubResource("ArrayMesh_dcsyi")
 skeleton = NodePath("")
 
 [node name="FL_2" type="Node3D" parent="FL_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
 
 [node name="BR_1" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.737598, 0.486249, -1.43655)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.9, 0.486, -1.437)
 use_as_traction = true
 wheel_rest_length = 0.05
 suspension_stiffness = 50.0
@@ -698,13 +702,15 @@ damping_compression = 0.2
 damping_relaxation = 0.5
 
 [node name="Object_8" type="MeshInstance3D" parent="BR_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
 mesh = SubResource("ArrayMesh_g6t57")
 skeleton = NodePath("")
 
 [node name="BR_1" type="Node3D" parent="BR_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
 
 [node name="BL_0" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.737598, 0.486249, -1.43655)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.9, 0.486, -1.437)
 use_as_traction = true
 wheel_rest_length = 0.05
 suspension_stiffness = 50.0
@@ -712,10 +718,12 @@ damping_compression = 0.2
 damping_relaxation = 0.5
 
 [node name="Object_6" type="MeshInstance3D" parent="BL_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
 mesh = SubResource("ArrayMesh_tynxd")
 skeleton = NodePath("")
 
 [node name="BL_0" type="Node3D" parent="BL_0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
 
 [node name="uaz" type="Node3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
@@ -758,7 +766,7 @@ mesh = SubResource("ArrayMesh_p1o6i")
 skeleton = NodePath("")
 
 [node name="ВодительArea3D" type="Area3D" parent="."]
-collision_layer = 3
+collision_layer = 2
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ВодительArea3D"]

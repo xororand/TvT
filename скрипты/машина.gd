@@ -13,15 +13,15 @@ var max_torque = 800
 
 func _physics_process(delta):
 	if entered and водитель != null:
-		steering = lerp(steering, Input.get_axis("движ_право", "движ_лево") * 0.4, 1*delta)
+		steering = lerp(steering, Input.get_axis("движ_право", "движ_лево") * 0.5, 1*delta)
 		var acceleration = Input.get_axis("движ_назад", "движ_вперед")
 		
 		var rpm = $BL_0.get_rpm()
 		var _max_rpm = max_rpm
 		if acceleration < 0 and rpm < 0:
 			acceleration *= 0.3
-			_max_rpm = -max_rpm * 0.4
-		print(_max_rpm)
+			_max_rpm = -max_rpm * 0.5
+		#print(_max_rpm)
 		$BL_0.engine_force = acceleration * max_torque * (1 - rpm / _max_rpm)
 		rpm = $BR_1.get_rpm()
 		$BR_1.engine_force = acceleration * max_torque * (1 - rpm / _max_rpm)
@@ -31,6 +31,8 @@ func _physics_process(delta):
 func _input(event):
 	if Input.is_action_just_pressed("использовать") and водитель != null and entered:
 		водитель.can_fire = true
+		водитель.can_sitdown = true
+		водитель.bypass_sitdown_raycasts = false
 		entered = false
 		водитель.in_vehicle = false
 		водитель.show_text("")
@@ -43,7 +45,10 @@ func _input(event):
 		return
 	
 	if Input.is_action_just_pressed("использовать") and водитель != null and !entered:
-		водитель.can_fire = false
+		водитель.can_fire = true
+		водитель.can_sitdown = false
+		водитель.issitdown = false
+		водитель.bypass_sitdown_raycasts = true
 		entered = true
 		водитель.in_vehicle = true
 		водитель.reparent(точка_входа_водителя)
@@ -52,6 +57,7 @@ func _input(event):
 		водитель.rotation = Vector3.ZERO
 		водитель.handitem.visible = false
 		водитель.show_text("Для выхода из автомобиля нажмите У")
+		
 	
 
 func _on_водительarea_3d_body_entered(body):

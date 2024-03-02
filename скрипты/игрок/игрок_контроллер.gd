@@ -66,6 +66,8 @@ var sitdown_coef:float = 0.0
 var proc_delta:float
 var in_vehicle:bool = false
 var can_fire:bool = true
+var bypass_sitdown_raycasts:bool = false
+var can_sitdown:bool = true
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -236,14 +238,15 @@ func process_camera(event):
 			handitem.rotation_degrees.z = clamp(handitem.rotation_degrees.z, -gun_max_angle, gun_max_angle)
 func process_sitdown(delta):
 	issitdown = false
-	if Input.is_action_pressed("присесть"): #and is_on_floor(): - убирает в прыжке возможность приседать
+	if Input.is_action_pressed("присесть") and can_sitdown: #and is_on_floor(): - убирает в прыжке возможность приседать
 		issitdown = true
 		sitdown_coef += delta*5
 	else:
-		for raycast in head_raycasts.get_children():
-			if(raycast.is_colliding()):
-				#print(raycast.get_collider())
-				return
+		if not bypass_sitdown_raycasts:
+			for raycast in head_raycasts.get_children():
+				if(raycast.is_colliding()):
+					#print(raycast.get_collider())
+					return
 		
 		sitdown_coef -= delta*5
 	

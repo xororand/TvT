@@ -65,7 +65,7 @@ var isrun:bool = false
 var sitdown_coef:float = 0.0
 var proc_delta:float
 var in_vehicle:bool = false
-
+var can_fire:bool = true
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -182,7 +182,7 @@ func process_gun(delta):
 	# стрельба
 	var time_ = Time.get_ticks_msec() - handitem.last_fire_time
 	var delta_time = 60000.0 / handitem.fire_rate
-	if Input.is_action_pressed("стрелять")  and time_ >= delta_time:
+	if Input.is_action_pressed("стрелять")  and time_ >= delta_time and can_fire:
 		isfire = true
 		var rad = 0.001
 		if time_ - delta_time < randf_range(10.0, 100.0):

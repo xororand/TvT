@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://скрипты/машина.gd" id="1_62fqq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_up5o4"]
-size = Vector3(2.16602, 0.554504, 4.4141)
+size = Vector3(2.16602, 0.91597, 4.4141)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rudfo"]
 resource_name = "black"
@@ -621,20 +621,22 @@ shadow_mesh = SubResource("ArrayMesh_v3px8")
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxsdq"]
 size = Vector3(1.26898, 2.15063, 1.07278)
 
-[node name="Машина" type="VehicleBody3D" node_paths=PackedStringArray("модель_руля", "точка_водителя")]
+[node name="Машина" type="VehicleBody3D" node_paths=PackedStringArray("модель_руля", "точка_входа_водителя", "точка_выхода_водителя")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 mass = 500.0
 script = ExtResource("1_62fqq")
 "модель_руля" = NodePath("uaz/Sketchfab_model/root/GLTF_SceneRootNode/Body_6/Object_4_002")
-"точка_водителя" = NodePath("точки_посадки/водитель")
+"точка_входа_водителя" = NodePath("точки_посадки/водитель")
+"точка_выхода_водителя" = NodePath("точки_высадки/выход_водитель")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25979, -0.0774422)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.07906, -0.0774422)
 shape = SubResource("BoxShape3D_up5o4")
 
 [node name="FR_3" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.737598, 0.486249, 1.43655)
 use_as_steering = true
+wheel_rest_length = 0.05
 suspension_stiffness = 50.0
 damping_compression = 0.8
 damping_relaxation = 1.0
@@ -648,6 +650,7 @@ skeleton = NodePath("")
 [node name="FL_2" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.737598, 0.486249, 1.43655)
 use_as_steering = true
+wheel_rest_length = 0.05
 suspension_stiffness = 50.0
 damping_compression = 0.8
 damping_relaxation = 1.0
@@ -661,6 +664,7 @@ skeleton = NodePath("")
 [node name="BR_1" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.737598, 0.486249, -1.43655)
 use_as_traction = true
+wheel_rest_length = 0.05
 suspension_stiffness = 50.0
 damping_compression = 0.8
 damping_relaxation = 1.0
@@ -674,6 +678,7 @@ skeleton = NodePath("")
 [node name="BL_0" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.737598, 0.486249, -1.43655)
 use_as_traction = true
+wheel_rest_length = 0.05
 suspension_stiffness = 50.0
 damping_compression = 0.8
 damping_relaxation = 1.0

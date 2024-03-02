@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dykt5ac1lhhfm"]
+[gd_scene load_steps=9 format=3 uid="uid://dykt5ac1lhhfm"]
 
+[ext_resource type="Script" path="res://скрипты/мир_контроллер.gd" id="1_7afgo"]
 [ext_resource type="Texture2D" uid="uid://cvcqmw1dl8kc1" path="res://графика/бесшовные/texture_01.png" id="1_pumn8"]
 [ext_resource type="PackedScene" uid="uid://680m7i607vlg" path="res://префабы/игрок.tscn" id="2_mloes"]
 [ext_resource type="PackedScene" uid="uid://bctxt7h80rhtg" path="res://модели/ПТРК Корнет.glb" id="3_7brf0"]
@@ -13,9 +14,13 @@ uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[node name="ТестоваяСцены" type="Node3D"]
+[node name="ТестоваяСцены" type="Node3D" node_paths=PackedStringArray("группа_игроков")]
+script = ExtResource("1_7afgo")
+"группа_игроков" = NodePath("игроки")
 
 [node name="bullets" type="Node3D" parent="."]
+
+[node name="игроки" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.646856, 0.139577, -0.74973, 0.762612, -0.118391, 0.63593, -1.85461e-09, -0.983108, -0.183025, 0, 4.88455, 0)

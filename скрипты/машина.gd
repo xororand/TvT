@@ -32,15 +32,15 @@ func _physics_process(delta):
 		_max_rpm = -max_rpm * 0.5
 	
 	if break_on:
-		$BL_0.brake = float(mass * 3 / 100)
-		$BR_1.brake = float(mass * 3 / 100)
+		$BL_0.brake = float(mass * 2 / 100)
+		$BR_1.brake = float(mass * 2 / 100)
 	
 	$BL_0.engine_force = acceleration * max_torque * (1 - rpm / _max_rpm)
 	rpm = $BR_1.get_rpm()
 	$BR_1.engine_force = acceleration * max_torque * (1 - rpm / _max_rpm)
 
 func _input(event):
-	if Input.is_action_just_pressed("использовать") and водитель != null and entered:
+	if Input.is_action_just_pressed("использовать") and водитель != null and entered: # выход из машины
 		водитель.can_fire = true
 		водитель.can_sitdown = true
 		водитель.bypass_sitdown_raycasts = false
@@ -50,13 +50,13 @@ func _input(event):
 		водитель.get_node("CollisionShape3D").disabled = false
 		водитель.reparent(точка_выхода_водителя)
 		водитель.position = Vector3.ZERO
-		водитель.rotation = Vector3.ZERO
 		водитель.handitem.visible = true
 		водитель.reparent(globals.группа_игроков)
+		водитель.rotation = Vector3.ZERO
 		водитель.rotate_y(135)
 		return
 	
-	if Input.is_action_just_pressed("использовать") and водитель != null and !entered:
+	if Input.is_action_just_pressed("использовать") and водитель != null and !entered: # вход в машину
 		водитель.can_fire = false
 		водитель.can_sitdown = false
 		водитель.issitdown = false

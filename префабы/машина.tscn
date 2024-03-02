@@ -664,9 +664,10 @@ shape = SubResource("BoxShape3D_4fdku")
 [node name="FR_3" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.9, 0.486, 1.437)
 use_as_steering = true
-wheel_rest_length = 0.05
+wheel_friction_slip = 50.0
+suspension_travel = 0.5
 suspension_stiffness = 50.0
-damping_compression = 0.2
+damping_compression = 0.3
 damping_relaxation = 0.5
 
 [node name="Object_12" type="MeshInstance3D" parent="FR_3"]
@@ -680,9 +681,10 @@ transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0.1, 0, 
 [node name="FL_2" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.9, 0.486, 1.437)
 use_as_steering = true
-wheel_rest_length = 0.05
+wheel_friction_slip = 50.0
+suspension_travel = 0.5
 suspension_stiffness = 50.0
-damping_compression = 0.2
+damping_compression = 0.3
 damping_relaxation = 0.5
 
 [node name="Object_10" type="MeshInstance3D" parent="FL_2"]
@@ -696,9 +698,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
 [node name="BR_1" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.9, 0.486, -1.437)
 use_as_traction = true
-wheel_rest_length = 0.05
+wheel_friction_slip = 50.0
+suspension_travel = 0.5
 suspension_stiffness = 50.0
-damping_compression = 0.2
+damping_compression = 0.3
 damping_relaxation = 0.5
 
 [node name="Object_8" type="MeshInstance3D" parent="BR_1"]
@@ -712,9 +715,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
 [node name="BL_0" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.9, 0.486, -1.437)
 use_as_traction = true
-wheel_rest_length = 0.05
+wheel_friction_slip = 50.0
+suspension_travel = 0.5
 suspension_stiffness = 50.0
-damping_compression = 0.2
+damping_compression = 0.3
 damping_relaxation = 0.5
 
 [node name="Object_6" type="MeshInstance3D" parent="BL_0"]

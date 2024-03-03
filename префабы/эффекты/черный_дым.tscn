@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://jysaejtvy8ew"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d6u08"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+angle_min = -63.3
+angle_max = 126.6
+inherit_velocity_ratio = 0.47
+direction = Vector3(1, 1.17, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+gravity = Vector3(0, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lr11a"]
+albedo_color = Color(0.356863, 0.356863, 0.356863, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fv35s"]
+material = SubResource("StandardMaterial3D_lr11a")
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="черный дым" type="GPUParticles3D"]
+lifetime = 3.0
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_d6u08")
+draw_pass_1 = SubResource("BoxMesh_fv35s")

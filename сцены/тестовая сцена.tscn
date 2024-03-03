@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://680m7i607vlg" path="res://префабы/игрок.tscn" id="2_mloes"]
 [ext_resource type="PackedScene" uid="uid://bctxt7h80rhtg" path="res://модели/ПТРК Корнет.glb" id="3_7brf0"]
 [ext_resource type="PackedScene" uid="uid://b8457quka0cln" path="res://модели/полевая пушка.glb" id="4_qs2ch"]
-[ext_resource type="PackedScene" uid="uid://c7yaeokbnngq4" path="res://префабы/машина.tscn" id="6_elbd2"]
+[ext_resource type="PackedScene" uid="uid://c7yaeokbnngq4" path="res://префабы/техника/УАЗ.tscn" id="6_elbd2"]
 [ext_resource type="PackedScene" uid="uid://bjwvvhdlp67a6" path="res://префабы/Цель.tscn" id="6_m602q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1o82"]

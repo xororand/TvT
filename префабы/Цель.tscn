@@ -44,8 +44,8 @@ _data = {
 }
 
 [node name="Цель" type="Area3D"]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_rmwv1")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]

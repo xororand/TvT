@@ -11,13 +11,13 @@ script = ExtResource("1_dfo5m")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-collision_mask = 2
+target_position = Vector3(0, 0, -1)
+collision_mask = 4
 collide_with_areas = true
 
 [node name="RayCast3D2" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-collision_mask = 2
+target_position = Vector3(0, 0, 1)
+collision_mask = 4
 collide_with_areas = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

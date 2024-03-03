@@ -8,12 +8,23 @@ var водитель:игрок_контроллер = null
 @export var точка_входа_водителя:Node3D
 @export var точка_выхода_водителя:Node3D
 
+@export var black_steam_effect:GPUParticles3D
+
+@export var hull_hp:float = 100
+@onready var max_hull_hp:float = hull_hp
+
 var max_rpm = 120
 var max_torque = 1000
+
 
 var break_on = false
 
 func _physics_process(delta):
+	if hull_hp / max_hull_hp <= 0.5:
+		black_steam_effect.emitting = true
+	else:
+		black_steam_effect.emitting = false
+	
 	var acceleration = 0.0
 	if entered and водитель != null:
 		break_on = false
@@ -69,8 +80,15 @@ func _input(event):
 		водитель.rotation = Vector3.ZERO
 		водитель.handitem.visible = false
 		водитель.show_text("Для выхода из автомобиля нажмите У")
-		
-	
+
+func hit():
+	hull_hp -= 1
+	print("hit")
+	if hull_hp <= 0:
+		destroy_car()
+
+func destroy_car():
+	self.queue_free()
 
 func _on_водительarea_3d_body_entered(body):
 	if not body.is_in_group("игроки"):
@@ -78,7 +96,6 @@ func _on_водительarea_3d_body_entered(body):
 	if not entered:
 		водитель = body
 	body.show_text("Для того чтобы сесть нажмите У")
-
 
 func _on_водительarea_3d_body_exited(body):
 	if not body.is_in_group("игроки"):

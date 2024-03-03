@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://c7yaeokbnngq4"]
+[gd_scene load_steps=36 format=3 uid="uid://c7yaeokbnngq4"]
 
 [ext_resource type="Script" path="res://скрипты/машина.gd" id="1_62fqq"]
+[ext_resource type="PackedScene" uid="uid://jysaejtvy8ew" path="res://префабы/эффекты/черный_дым.tscn" id="2_1bda7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_up5o4"]
 size = Vector3(2.03717, 0.783668, 1.49921)
@@ -633,13 +634,19 @@ shadow_mesh = SubResource("ArrayMesh_v3px8")
 [sub_resource type="BoxShape3D" id="BoxShape3D_cxsdq"]
 size = Vector3(1.26898, 2.15063, 1.07278)
 
-[node name="Машина" type="VehicleBody3D" node_paths=PackedStringArray("модель_руля", "точка_входа_водителя", "точка_выхода_водителя")]
+[node name="УАЗ" type="VehicleBody3D" node_paths=PackedStringArray("модель_руля", "точка_входа_водителя", "точка_выхода_водителя", "black_steam_effect")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+collision_layer = 5
 mass = 500.0
 script = ExtResource("1_62fqq")
 "модель_руля" = NodePath("uaz/Sketchfab_model/root/GLTF_SceneRootNode/Body_6/Object_4_002")
 "точка_входа_водителя" = NodePath("точки_посадки/водитель")
 "точка_выхода_водителя" = NodePath("точки_высадки/выход_водитель")
+black_steam_effect = NodePath("черный дым")
+
+[node name="черный дым" parent="." instance=ExtResource("2_1bda7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27344e-07, 1.3727, 1.45664)
+emitting = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0146179, 1.14521, 1.37884)

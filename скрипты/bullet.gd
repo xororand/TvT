@@ -28,12 +28,14 @@ func _physics_process(delta):
 	raycast.force_raycast_update()
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
+		print(collider)
 		if collider.has_method("hit"):
 			hit = true
 			hit_collider(collider, raycast.get_collision_point())
 	
 	if hit:
 		return
+	
 	raycast2.force_raycast_update()
 	if raycast2.is_colliding():
 		var collider = raycast2.get_collider()

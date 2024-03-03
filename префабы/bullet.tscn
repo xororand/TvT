@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5yf6xds5d28v"]
 
-[ext_resource type="Script" path="res://скрипты/bullet.gd" id="1_dfo5m"]
+[ext_resource type="Script" path="res://скрипты/стрельба/bullet.gd" id="1_dfo5m"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_u8txx"]
 size = Vector2(0.025, 2)

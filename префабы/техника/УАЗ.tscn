@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://c7yaeokbnngq4"]
 
-[ext_resource type="Script" path="res://скрипты/машина.gd" id="1_62fqq"]
+[ext_resource type="Script" path="res://скрипты/техника/машина_контроллер.gd" id="1_35wrj"]
 [ext_resource type="PackedScene" uid="uid://jysaejtvy8ew" path="res://префабы/эффекты/черный_дым.tscn" id="2_1bda7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_up5o4"]
@@ -638,7 +638,7 @@ size = Vector3(1.26898, 2.15063, 1.07278)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 collision_layer = 5
 mass = 500.0
-script = ExtResource("1_62fqq")
+script = ExtResource("1_35wrj")
 "модель_руля" = NodePath("uaz/Sketchfab_model/root/GLTF_SceneRootNode/Body_6/Object_4_002")
 "точка_входа_водителя" = NodePath("точки_посадки/водитель")
 "точка_выхода_водителя" = NodePath("точки_высадки/выход_водитель")
@@ -669,16 +669,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.950
 shape = SubResource("BoxShape3D_4fdku")
 
 [node name="FR_3" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.9, 0.486, 1.437)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.9, 0.356844, 1.437)
 use_as_steering = true
-wheel_friction_slip = 50.0
-suspension_travel = 0.5
+wheel_rest_length = 0.05
 suspension_stiffness = 50.0
 damping_compression = 0.3
 damping_relaxation = 0.5
 
 [node name="Object_12" type="MeshInstance3D" parent="FR_3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 2.38419e-07)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.1, 0, 2.38419e-07)
 mesh = SubResource("ArrayMesh_idu7k")
 skeleton = NodePath("")
 
@@ -686,16 +685,15 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 7.10543e-15, 0, 1, 0.1, 0, 2.38419e-07)
 
 [node name="FL_2" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.9, 0.486, 1.437)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.9, 0.356844, 1.437)
 use_as_steering = true
-wheel_friction_slip = 50.0
-suspension_travel = 0.5
+wheel_rest_length = 0.05
 suspension_stiffness = 50.0
 damping_compression = 0.3
 damping_relaxation = 0.5
 
 [node name="Object_10" type="MeshInstance3D" parent="FL_2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.1, 0, 0)
 mesh = SubResource("ArrayMesh_dcsyi")
 skeleton = NodePath("")
 
@@ -703,16 +701,15 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
 
 [node name="BR_1" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.9, 0.486, -1.437)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.9, 0.356844, -1.437)
 use_as_traction = true
-wheel_friction_slip = 50.0
-suspension_travel = 0.5
+wheel_rest_length = 0.05
 suspension_stiffness = 50.0
 damping_compression = 0.3
 damping_relaxation = 0.5
 
 [node name="Object_8" type="MeshInstance3D" parent="BR_1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.1, 0, 0)
 mesh = SubResource("ArrayMesh_g6t57")
 skeleton = NodePath("")
 
@@ -720,16 +717,15 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0)
 
 [node name="BL_0" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.9, 0.486, -1.437)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.9, 0.356844, -1.437)
 use_as_traction = true
-wheel_friction_slip = 50.0
-suspension_travel = 0.5
+wheel_rest_length = 0.05
 suspension_stiffness = 50.0
 damping_compression = 0.3
 damping_relaxation = 0.5
 
 [node name="Object_6" type="MeshInstance3D" parent="BL_0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.1, 0, 0)
 mesh = SubResource("ArrayMesh_tynxd")
 skeleton = NodePath("")
 

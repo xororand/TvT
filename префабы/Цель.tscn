@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjwvvhdlp67a6"]
 
-[ext_resource type="Script" path="res://скрипты/Цель.gd" id="1_rmwv1"]
+[ext_resource type="Script" path="res://скрипты/стрельба/Цель.gd" id="1_rmwv1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhalb"]
 margin = 0.1

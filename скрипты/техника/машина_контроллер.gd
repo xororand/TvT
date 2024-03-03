@@ -3,14 +3,14 @@ extends VehicleBody3D
 var entered = false
 var водитель:игрок_контроллер = null
 
-@export var модель_руля:MeshInstance3D # TODO: поворот руля
+@export var модель_руля:MeshInstance3D
 
 @export var точка_входа_водителя:Node3D
 @export var точка_выхода_водителя:Node3D
 
 @export var black_steam_effect:GPUParticles3D
 
-@export var hull_hp:float = 100
+@export var hull_hp:float = 100.0
 @onready var max_hull_hp:float = hull_hp
 
 var max_rpm = 120
@@ -85,9 +85,9 @@ func hit():
 	hull_hp -= 1
 	print("hit")
 	if hull_hp <= 0:
-		destroy_car()
+		destroy_veh()
 
-func destroy_car():
+func destroy_veh():
 	self.queue_free()
 
 func _on_водительarea_3d_body_entered(body):

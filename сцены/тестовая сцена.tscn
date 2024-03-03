@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dykt5ac1lhhfm"]
+[gd_scene load_steps=10 format=3 uid="uid://dykt5ac1lhhfm"]
 
 [ext_resource type="Script" path="res://скрипты/мир_контроллер.gd" id="1_7afgo"]
 [ext_resource type="Texture2D" uid="uid://cvcqmw1dl8kc1" path="res://графика/бесшовные/texture_01.png" id="1_pumn8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b8457quka0cln" path="res://модели/полевая пушка.glb" id="4_qs2ch"]
 [ext_resource type="PackedScene" uid="uid://c7yaeokbnngq4" path="res://префабы/техника/УАЗ.tscn" id="6_elbd2"]
 [ext_resource type="PackedScene" uid="uid://bjwvvhdlp67a6" path="res://префабы/Цель.tscn" id="6_m602q"]
+[ext_resource type="PackedScene" uid="uid://c7bhqwxo5bx0n" path="res://префабы/техника/LittleBird.tscn" id="8_vryco"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i1o82"]
 albedo_texture = ExtResource("1_pumn8")
@@ -338,7 +339,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.9141, 0.499999, 0.574184)
 [node name="полевая пушка" parent="." instance=ExtResource("4_qs2ch")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.02265, 0.5, -5.0732)
 
-[node name="Машина" parent="." instance=ExtResource("6_elbd2")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -8, 1, -10)
+[node name="УАЗ" parent="." instance=ExtResource("6_elbd2")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.10607, 0.84948, -10.322)
+
+[node name="LittleBird" parent="." instance=ExtResource("8_vryco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.95452, 0.5, -19.7096)
 
 [editable path="Игрок"]

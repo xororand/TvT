@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://df05sek0evryt"]
 
-[ext_resource type="Script" path="res://скрипты/bullet_hit_effect.gd" id="1_8scvq"]
+[ext_resource type="Script" path="res://скрипты/стрельба/bullet_hit_effect.gd" id="1_8scvq"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5d3sm"]
 particle_flag_align_y = true

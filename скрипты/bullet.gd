@@ -15,7 +15,9 @@ func _ready():
 	if randi_range(0, 1):
 		trail.visible = true
 
-func _process(delta):
+func _physics_process(delta):
+	position.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * 0.0025
+	
 	current_distance += delta * bullet_speed
 	
 	if current_distance >= max_distance:
@@ -23,28 +25,38 @@ func _process(delta):
 	
 	
 	position += -get_transform().basis.z.normalized() * delta * bullet_speed
-	
+	raycast.force_raycast_update()
 	if raycast.is_colliding():
 		var collider = raycast.get_collider()
 		if collider.has_method("hit"):
 			hit = true
-			collider.hit()
+			hit_collider(collider, raycast.get_collision_point())
 	
 	if hit:
 		return
-	
+	raycast2.force_raycast_update()
 	if raycast2.is_colliding():
 		var collider = raycast2.get_collider()
 		if collider.has_method("hit"):
-			collider.hit()
+			hit_collider(collider, raycast2.get_collision_point())
 
-func _physics_process(delta):
-	position.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * 0.001
+
+func hit_collider(collider, point_pos):
+	collider.hit()
+	var node = globals.bullet_hit_effect.instantiate()
+	node.position = point_pos
+	node.rotation_degrees = rotation_degrees * Vector3(-1.0, -1.0, -1.0)
+	
+	print(node.rotation_degrees)
+	globals.add_child(node)
+	#print("удаление пули")
+	self.queue_free()
 
 func _on_body_entered(body):
 	if body == globals.current_player:
 		return
 	
+	print("удаление пули")
 	self.queue_free()
 
 

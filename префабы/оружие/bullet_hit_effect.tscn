@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://df05sek0evryt"]
+
+[ext_resource type="Script" path="res://скрипты/bullet_hit_effect.gd" id="1_8scvq"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5d3sm"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.05
+angle_min = -15.8
+angle_max = 47.4
+radial_velocity_min = 21.98
+radial_velocity_max = 21.98
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+anim_speed_max = 4.04
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63omq"]
+albedo_color = Color(1, 0.670588, 0.396078, 1)
+emission_enabled = true
+emission = Color(1, 0.670588, 0.396078, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_iovmw"]
+material = SubResource("StandardMaterial3D_63omq")
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="bullet_hit_effect" type="GPUParticles3D"]
+emitting = false
+amount = 10
+lifetime = 0.2
+one_shot = true
+speed_scale = 0.5
+explosiveness = 1.0
+randomness = 0.5
+fixed_fps = 60
+trail_lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_5d3sm")
+draw_pass_1 = SubResource("BoxMesh_iovmw")
+script = ExtResource("1_8scvq")

@@ -1,14 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://doe8i0bi0kso5"]
+[gd_scene load_steps=9 format=3 uid="uid://b01g7dqpy13qe"]
 
-[ext_resource type="PackedScene" uid="uid://c2jqgud171t2n" path="res://модели/SMG/SMG.glb" id="1_3wsr5"]
-[ext_resource type="Texture2D" uid="uid://djeltsmtgl4sw" path="res://модели/обвесы оружия/прицел_SMG2_Metal2_baseColor.png" id="2_t0t7x"]
-[ext_resource type="Shader" path="res://графика/шейдеры/sight_red_dot.gdshader" id="3_4jb6n"]
-[ext_resource type="Texture2D" uid="uid://g8s8cynm7dc6" path="res://графика/прицелы/sign.svg" id="4_4p2xq"]
+[ext_resource type="Texture2D" uid="uid://djeltsmtgl4sw" path="res://модели/обвесы оружия/прицел_SMG2_Metal2_baseColor.png" id="1_beo40"]
+[ext_resource type="Shader" path="res://графика/шейдеры/sight_red_dot.gdshader" id="2_p3p4m"]
+[ext_resource type="Texture2D" uid="uid://g8s8cynm7dc6" path="res://графика/прицелы/sign.svg" id="3_qijqo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7q5ki"]
 resource_name = "SMG2_Metal2"
 cull_mode = 2
-albedo_texture = ExtResource("2_t0t7x")
+albedo_texture = ExtResource("1_beo40")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fp3px"]
 _surfaces = [{
@@ -44,7 +43,7 @@ shadow_mesh = SubResource("ArrayMesh_fp3px")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xjnkn"]
 render_priority = 0
-shader = ExtResource("3_4jb6n")
+shader = ExtResource("2_p3p4m")
 shader_parameter/lens_color = Color(1, 0, 0, 1)
 shader_parameter/retical_color = Color(0.65098, 0.780392, 0.905882, 0.0313726)
 shader_parameter/retical_size = 0.0
@@ -54,30 +53,19 @@ shader_parameter/depth = 10.0
 shader_parameter/offset_x = 0.0
 shader_parameter/offset_y = 0.0
 shader_parameter/emission_strength = 0.5
-shader_parameter/lens_texture = ExtResource("4_4p2xq")
+shader_parameter/lens_texture = ExtResource("3_qijqo")
 
 [sub_resource type="QuadMesh" id="QuadMesh_5emrn"]
 material = SubResource("ShaderMaterial_xjnkn")
 size = Vector2(0.018, 0.012)
 
-[node name="SMG" type="Node3D"]
+[node name="модель" type="Node3D"]
 
-[node name="BulletStart" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0214502, -0.167951)
-
-[node name="model" parent="." instance=ExtResource("1_3wsr5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0763237, -0.103173)
-
-[node name="прицел" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00010182, 0.0448362, -0.0923146)
-
-[node name="модель" type="Node3D" parent="прицел"]
-
-[node name="SMG2_Sight_SMG2_Metal2_0" type="MeshInstance3D" parent="прицел/модель"]
+[node name="SMG2_Sight_SMG2_Metal2_0" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, -0.013965, 0.0064231)
 mesh = SubResource("ArrayMesh_j4wkl")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="прицел/модель"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00416357, 0)
 mesh = SubResource("QuadMesh_5emrn")

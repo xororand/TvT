@@ -11,4 +11,5 @@ func _physics_process(delta):
 func hit():
 	print("hit")
 	animplayer.play("hitten")
+	
 

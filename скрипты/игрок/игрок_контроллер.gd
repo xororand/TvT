@@ -56,6 +56,8 @@ var gun_fire_velocity:float = 0.0
 @export var gun_max_angle:float = 15.0
 ## Скорость вскидки оружия на целик
 @export var gun_aim_speed:float = 4.0
+@export var on_fire_move_x_coef:float = 1.0
+@export var on_fire_move_y_coef:float = 1.0
 
 var canjump:bool = true
 var isaim:bool = false
@@ -191,6 +193,11 @@ func process_gun(delta):
 			rad = (time_ - delta_time) * delta / coef_razbrosa # 5.0 коэф разброса если время между выстрелами меньше 100мсек
 		
 		var razbros = Vector3(randf_range(-rad, rad), randf_range(-rad, rad), 0.0)
+		var rot_x:float = -on_fire_move_x_coef * delta * razbros.x
+		var rot_y:float = -on_fire_move_y_coef * delta * razbros.y
+		
+		camera_pivot.rotate_x(rot_x)
+		rotate_y(rot_y)
 		
 		if !issitdown:
 			gun_fire_velocity += randf_range(-delta, delta)

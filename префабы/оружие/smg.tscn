@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://doe8i0bi0kso5"]
+
+[ext_resource type="PackedScene" uid="uid://c2jqgud171t2n" path="res://модели/SMG/SMG.glb" id="1_j12kh"]
+[ext_resource type="PackedScene" uid="uid://b01g7dqpy13qe" path="res://префабы/оружие/обвесы/прицел_коллиматорный.tscn" id="2_3wfu0"]
+
+[node name="SMG" type="Node3D"]
+
+[node name="BulletStart" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0214502, -0.167951)
+
+[node name="model" parent="." instance=ExtResource("1_j12kh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0763237, -0.103173)
+
+[node name="прицел" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00010182, 0.0448362, -0.0923146)
+
+[node name="прицел_коллиматорный" parent="прицел" instance=ExtResource("2_3wfu0")]

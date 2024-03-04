@@ -79,7 +79,7 @@ func _input(event):
 		водитель.position = Vector3.ZERO
 		водитель.rotation = Vector3.ZERO
 		водитель.handitem.visible = false
-		водитель.show_text("Для выхода из автомобиля нажмите У")
+		водитель.show_text("Для выхода из автомобиля нажмите F")
 
 func hit():
 	hull_hp -= 1
@@ -95,7 +95,7 @@ func _on_водительarea_3d_body_entered(body):
 		return
 	if not entered:
 		водитель = body
-	body.show_text("Для того чтобы сесть нажмите У")
+	body.show_text("Для того чтобы сесть нажмите F")
 
 func _on_водительarea_3d_body_exited(body):
 	if not body.is_in_group("игроки"):

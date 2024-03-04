@@ -6,11 +6,13 @@ var coef_start:float = 0.0
 var delta_coef_start:float = 0.8#0.1
 
 var main_rotor_tyaga:float = 0.0
-var main_rotor_torque:float = 5.0
+var main_rotor_torque:float = 25.0
 
 var угол_атаки:float = 0.0
 var угол_крена:float = 0.0
 var угол_рысканья:float = 0.0
+
+@onready var alt_set = self.position.y
 
 var entered = false
 var водитель:игрок_контроллер = null
@@ -40,30 +42,48 @@ func _physics_process(delta):
 	else:
 		black_steam_effect.emitting = false
 	
-	модель_главный_ротор.rotation.y += delta * max_main_rotor_rpm * abs(exp((coef_start * 10.0) - 10.0))
+	модель_главный_ротор.rotation.y += delta * max_main_rotor_rpm * abs(exp((coef_start * 10.0) - 10.0)) # анимация ротора
+	
 	if модель_главный_ротор.rotation.y >= 360.0:
 		модель_главный_ротор.rotation.y = 0.0
 	
 	velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
 	
 	if Input.is_action_pressed("повышение_тяги_главного_ротора") and entered and водитель != null:
-		main_rotor_tyaga += delta * 2.0
-	else:
-		main_rotor_tyaga -= delta * 0.5
+		alt_set += delta * 2.0
+		#main_rotor_tyaga += delta * 2.0
+	if Input.is_action_pressed("понижение_тяги_главного_ротора") and entered and водитель != null:
+		alt_set -= delta * 2.0
+	
+	main_rotor_tyaga = alt_set / self.position.y * -velocity.y
+	
 	main_rotor_tyaga = clamp(main_rotor_tyaga, 0.0, 1.0)
 	
-	if entered and водитель != null:
-		print(Input.get_axis("движ_назад", "движ_вперед"))
-		угол_атаки += -Input.get_axis("движ_назад", "движ_вперед") * coef_start * delta * 0.1
-		угол_крена += -Input.get_axis("движ_лево", "движ_право") * coef_start * delta * 0.1
-		угол_рысканья += Input.get_axis("рысканье_лево", "рысканье_право") * coef_start * delta * 0.1
+	угол_атаки -= угол_атаки * 0.1
+	угол_крена -= угол_крена * 0.1
+	угол_рысканья -= угол_рысканья * 0.1
+	
+	if entered:
+		угол_атаки += -Input.get_axis("движ_назад", "движ_вперед") * coef_start * delta * 5.0
+		угол_крена += -Input.get_axis("движ_лево", "движ_право") * coef_start * delta * 5.0
+		угол_рысканья += Input.get_axis("рысканье_лево", "рысканье_право") * coef_start * delta * 3.0
 	
 	rotation_degrees.x -= угол_атаки
 	rotation_degrees.z -= угол_крена
 	rotation_degrees.y -= угол_рысканья
 	
-	velocity += transform.basis.y * main_rotor_tyaga * coef_start * (ProjectSettings.get_setting("physics/3d/default_gravity") * 2.0) * delta
+	rotation_degrees.x -= rotation_degrees.x * 0.05
+	rotation_degrees.z -= rotation_degrees.z * 0.05
+	#rotation_degrees.y -= rotation_degrees.y * 0.1
 	
+	velocity += transform.basis.y * main_rotor_tyaga * coef_start * main_rotor_torque * delta
+	velocity.x -= velocity.x * 0.05 * delta
+	velocity.z -= velocity.z * 0.05 * delta
+	if abs(velocity.x) <= 0.005:
+		velocity.x = 0.0
+	if abs(velocity.z) <= 0.005:
+		velocity.z = 0.0
+	#print(velocity)
 	move_and_slide()
 
 func _input(event):

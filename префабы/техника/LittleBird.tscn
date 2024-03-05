@@ -1132,10 +1132,12 @@ shadow_mesh = SubResource("ArrayMesh_w3yrm")
 [sub_resource type="BoxShape3D" id="BoxShape3D_61n2k"]
 size = Vector3(2.0421, 2.15063, 1.36258)
 
-[node name="LittleBird" type="CharacterBody3D" node_paths=PackedStringArray("модель_главный_ротор", "модель_контроллера", "точка_входа_водителя", "точка_выхода_водителя", "black_steam_effect")]
+[node name="LittleBird" type="RigidBody3D" node_paths=PackedStringArray("модель_главный_ротор", "модель_задний_ротор", "модель_контроллера", "точка_входа_водителя", "точка_выхода_водителя", "black_steam_effect")]
 collision_layer = 5
+center_of_mass_mode = 1
 script = ExtResource("1_6bd46")
 "модель_главный_ротор" = NodePath("model/гриб")
+"модель_задний_ротор" = NodePath("model/Cube_008")
 "модель_контроллера" = NodePath("model/Cube_020")
 "точка_входа_водителя" = NodePath("точки_посадки/водитель")
 "точка_выхода_водителя" = NodePath("точки_высадки/выход_водитель")

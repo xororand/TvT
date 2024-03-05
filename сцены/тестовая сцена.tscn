@@ -319,7 +319,7 @@ size = Vector3(6, 2.194, 11)
 material = SubResource("StandardMaterial3D_i1o82")
 
 [node name="Игрок" parent="." instance=ExtResource("2_mloes")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.42212, 0.5, -0.226362)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.92283, 0.5, -18.8124)
 
 [node name="Camera3D" parent="Игрок/camera_pivot" index="0"]
 current = true

@@ -51,7 +51,8 @@ func _physics_process(delta):
 	$BR_1.engine_force = acceleration * max_torque * (1 - rpm / _max_rpm)
 
 func _input(event):
-	if Input.is_action_just_pressed("использовать") and водитель != null and entered: # выход из машины
+	pass
+	'''if Input.is_action_just_pressed("использовать") and водитель != null and entered: # выход из машины
 		водитель.can_fire = true
 		водитель.can_sitdown = true
 		водитель.bypass_sitdown_raycasts = false
@@ -79,7 +80,7 @@ func _input(event):
 		водитель.position = Vector3.ZERO
 		водитель.rotation = Vector3.ZERO
 		водитель.handitem.visible = false
-		водитель.show_text("Для выхода из автомобиля нажмите F")
+		водитель.show_text("Для выхода нажмите F")'''
 
 func hit():
 	hull_hp -= 1

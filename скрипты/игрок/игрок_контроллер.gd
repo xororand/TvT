@@ -15,7 +15,7 @@ class_name игрок_контроллер
 @export var aim_pos:Node3D
 @export var handitem:hand_item
 @onready var bullets:Node3D = get_parent().get_node("bullets")
-
+@export var horisont_polosa:TextureRect
 
 @export_group("Настройки камеры")
 @export var fov:float = 90.0
@@ -70,6 +70,7 @@ var in_vehicle:bool = false
 var can_fire:bool = true
 var bypass_sitdown_raycasts:bool = false
 var can_sitdown:bool = true
+var VehEnterExitArea3D:seat = null
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -90,9 +91,11 @@ func _process(delta):
 	process_sitdown(delta)
 func _physics_process(delta):
 	process_gravity(delta)
+	process_veh_hud(delta)
 
 func _input(event):
 	process_camera(event)
+	process_veh(event)
 
 func process_gravity(delta):
 	if in_vehicle:
@@ -154,7 +157,9 @@ func process_gun(delta):
 	var aim_local_coef = delta * gun_aim_speed
 	fov_coef -= aim_local_coef
 	var _gun_jump_shake = 0.0
-	if Input.is_action_pressed("прицеливание") and handitem.is_gun and not in_vehicle:
+	if Input.is_action_pressed("прицеливание") and handitem.is_gun:
+		if in_vehicle and VehEnterExitArea3D.get_seat_type() == seat.type.DRIVER:
+			return
 		_gun_jump_shake = gun_jump_shake * 0.1
 		if Input.is_action_pressed("прищуриться_на_прицеливании") or handitem.fov_coef != 1.0:
 			fov_coef += aim_local_coef * 2.0
@@ -228,21 +233,79 @@ func process_run():
 		isrun = false
 func process_camera(event):
 	if event is InputEventMouseMotion:
+		if in_vehicle:
+			rotation_degrees.y = clamp(rotation_degrees.y, VehEnterExitArea3D.max_view.x, VehEnterExitArea3D.max_view.y) # ограничение по горизонтали
 		# обработка поворотов камеры
 		var rot_x:float = event.relative.y * -c_rot_x * proc_delta
 		var rot_y:float = event.relative.x * -c_rot_y * proc_delta
 		camera_pivot.rotate_x(rot_x)
-		rotate_y(rot_y)
+		if in_vehicle:
+			if rotation_degrees.y + rot_y > VehEnterExitArea3D.max_view.y or \
+			rotation_degrees.y + rot_y < VehEnterExitArea3D.max_view.x:
+				pass
+			else:
+				rotate_y(rot_y)
+		else:
+			rotate_y(rot_y)
 		
 		camera_pivot.rotation_degrees.x = clamp(camera_pivot.rotation_degrees.x, max_angle_x.x, max_angle_x.y) # ограничение по вертикали
-		if in_vehicle:
-			rotation_degrees.y = clamp(rotation_degrees.y, -110, 110) # ограничение по горизонтали
+		
 		
 		# сглаженные повороты оружием при повороте вокруг себя (ось Y)
 		if handitem.is_gun:
 			handitem.position += Vector3(rot_y * gun_move_speed, rot_x * gun_move_speed, 0.0)
 			handitem.rotation_degrees.z += rot_y * proc_delta * gun_rotate_speed * 20.0
 			handitem.rotation_degrees.z = clamp(handitem.rotation_degrees.z, -gun_max_angle, gun_max_angle)
+		#print(rotation_degrees.y)
+func process_veh(event):
+	if VehEnterExitArea3D == null:
+		return
+	
+	var veh = VehEnterExitArea3D.get_parent()
+	
+	if VehEnterExitArea3D.get_seat_type() == seat.type.DRIVER \
+	and Input.is_action_just_pressed("старт_двигателя_авиация") \
+	and veh.entered \
+	and veh.водитель == self:
+			veh.is_started = !veh.is_started
+	if Input.is_action_just_pressed("использовать") and veh.entered: # выход из машины
+		veh.водитель.can_fire = true
+		veh.водитель.can_sitdown = true
+		veh.водитель.bypass_sitdown_raycasts = false
+		veh.entered = false
+		veh.водитель.in_vehicle = false
+		veh.водитель.show_text("")
+		veh.водитель.get_node("CollisionShape3D").disabled = false
+		veh.водитель.reparent(VehEnterExitArea3D.get_node("точка_выхода"))
+		veh.водитель.position = Vector3.ZERO
+		veh.водитель.handitem.visible = true
+		veh.водитель.reparent(globals.группа_игроков)
+		veh.водитель.rotation = Vector3.ZERO
+		veh.водитель.rotate_y(135)
+		veh.водитель = null
+		return
+	
+	
+	if Input.is_action_just_pressed("использовать") and !veh.entered: # вход в машину
+		veh.водитель = self
+		if VehEnterExitArea3D.get_seat_type() == seat.type.DRIVER:
+			veh.водитель.can_fire = false
+			veh.водитель.handitem.visible = false
+		veh.водитель.can_sitdown = false
+		veh.водитель.issitdown = false
+		veh.водитель.bypass_sitdown_raycasts = true
+		veh.entered = true
+		veh.водитель.in_vehicle = true
+		veh.водитель.reparent(VehEnterExitArea3D.get_node("точка_входа"))
+		veh.водитель.get_node("CollisionShape3D").disabled = true
+		veh.водитель.position = Vector3.ZERO
+		veh.водитель.rotation = Vector3.ZERO
+		veh.водитель.show_text("Для выхода нажмите F")
+func process_veh_hud(delta):
+	if VehEnterExitArea3D == null:
+			return
+	var veh = VehEnterExitArea3D.get_parent()
+	horisont_polosa.position.y = veh.rotation.x * 60.0
 func process_sitdown(delta):
 	issitdown = false
 	if Input.is_action_pressed("присесть") and can_sitdown: #and is_on_floor(): - убирает в прыжке возможность приседать
@@ -269,3 +332,20 @@ func process_sitdown(delta):
 
 func show_text(text):
 	tip_label.text = text
+
+
+func _on_area_3d_area_entered(area):
+	if area.is_in_group("VehEnterArea"):
+		var veh = area.get_parent()
+		if not veh.entered:
+			VehEnterExitArea3D = area
+			show_text("Для того чтобы сесть нажмите F")
+
+
+func _on_area_3d_area_exited(area):
+	if area.is_in_group("VehEnterArea"):
+		var veh = area.get_parent()
+		if not veh.entered:
+			VehEnterExitArea3D = null
+			show_text("")
+	
